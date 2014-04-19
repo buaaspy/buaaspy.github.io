@@ -10,6 +10,7 @@ body {
 
 H1 {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
+    text-align: center;
 }
 
 H2 {
@@ -21,6 +22,7 @@ H2 {
     width: 90%;
     line-height: 150%;
     color: DarkGreen;
+    text-align: center;
 }
 
 
