@@ -1,0 +1,370 @@
+
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="../../../../stylesheets/main.css" rel="stylesheet" type="text/css">
+
+<title>continuation passing style</title>
+
+</head>
+　　
+<body>
+
+<h2>continuation passing style</h2>
+<p>
+下面是经典的阶乘函数：
+</p>
+
+<pre><code>
+(define fact
+  (lambda (n)
+    (if (zero? n) 1 (* n (fact (- n 1))))))
+</code></pre>
+
+<p>
+它的推导过程：
+</p>
+
+<pre><code>
+(fact 4)
+= (* 4 (fact 3))
+= (* 4 (* 3 (fact 2)))
+= (* 4 (* 3 (* 2 (fact 1))))
+= (* 4 (* 3 (* 2 (* 1 (fact 0)))))
+= (* 4 (* 3 (* 2 (* 1 1))))
+= (* 4 (* 3 (* 2 1)))
+= (* 4 (* 3 2))
+= (* 4 6)
+= 24
+</code></pre>
+
+<p>
+每一次fact的调用都要确保将返回值乘以参数，推倒过程会首先扩张控制上下文（control context），然后收缩这个过程。将递归的程序和下面的过程相比较：
+</p>
+
+<pre><code>
+(define fact-iter
+  (lambda (n)
+    (fact-iter-acc n 1)))
+(define fact-iter-acc
+  (lambda (n a)
+    (if (zero? n) a (fact-iter-acc (- n 1) (* n a)))))
+</code></pre>
+
+<p>
+迭代函数的推导过程：	
+</p>
+
+<pre><code>
+(fact-iter 4)
+= (fact-iter-acc 4 1)
+= (fact-iter-acc 3 4)
+= (fact-iter-acc 2 12)
+= (fact-iter-acc 1 24)
+= (fact-iter-acc 0 24)
+= 24
+</code></pre>
+
+<p>
+fact-iter-acc的每一次调用都处在尾递归的位置，除了将它的返回值返回以外，不需要再做额外的工作。
+</p>
+
+<p>
+为什么递归式和迭代式会产生不同的推导过程呢？在递归定义的阶乘函数中，fact处在操作数的位置上，因此我们需要在函数调用完成后继续对返回值做外层的计算，这说明了一个重要的原则：
+</p>
+
+<p>
+<pre><code>
+导致控制上下文增长的原因在于对操作数进行求值而非函数调用
+</code></pre>
+</p>
+
+<h3>闭包传递解释器</h3>
+<p>首先给出一个传统的环境求值型解释器</p>
+<pre><code>
+FinalAnswer = ExpVal
+
+value-of-program : Program → FinalAnswer
+  (define value-of-program
+    (lambda (pgm)
+      (cases program pgm
+        (a-program (exp1)
+          (value-of exp1 (init-env))))))
+
+value-of : Exp × Env → ExpVal
+(define value-of
+  (lambda (exp env)
+    (cases expression exp
+      (const-exp (num) (num-val num))
+      (var-exp (var) (apply-env env var))
+      (diff-exp (exp1 exp2)
+        (let ((num1 (expval->num (value-of exp1 env)))
+              (num2 (expval->num (value-of exp2 env))))
+              (num-val (- num1 num2))))
+      (zero?-exp (exp1)
+        (let ((num1 (expval->num (value-of exp1 env))))
+          (if (zero? num1) (bool-val #t) (bool-val #f))))
+      (if-exp (exp1 exp2 exp3)
+        (if (expval->bool (value-of exp1 env))
+          (value-of exp2 env)
+          (value-of exp3 env)))
+      (let-exp (var exp1 body)
+        (let ((val1 (value-of exp1 env)))
+          (value-of body (extend-env var val1 env))))
+      (proc-exp (var body)
+        (proc-val (procedure var body env)))
+      (call-exp (rator rand)
+        (let ((proc1 (expval->proc (value-of rator env)))
+              (arg (value-of rand env)))
+          (apply-procedure proc1 arg)))
+      (letrec-exp (p-name b-var p-body letrec-body)
+        (value-of letrec-body
+          (extend-env-rec p-name b-var p-body env))))))
+
+apply-procedure : Proc × ExpVal → ExpVal
+(define apply-procedure
+  (lambda (proc1 val)
+    (cases proc proc1
+      (procedure (var body saved-env)
+      (value-of body (extend-env var val saved-env))))))     
+</code></pre>
+<p>
+环境（environment）就是符号到指称值的函数，那么闭包（continuation）的概念是什么呢？一个表达式的闭包是一个函数，它将该表达式的求值结果作为参数并完成计算。所以闭包相关的接口必须包含一个函数apply-cont，它接收一个闭包cont和一个表达式的值val，然后完成cont指定的计算。apply-cont的接口如下：
+</p>
+
+<pre><code>
+FinalAnswer = ExpVal
+apply-cont : Cont × ExpVal → FinalAnswer
+</code></pre>
+
+<p>
+首先我们需要一个终结者，它有如下的接口：
+</p>
+<pre><code>
+(apply-cont (end-cont) val)
+  = (begin
+      (eopl:printf "End of computation.~%")
+      val)
+</code></pre>
+<p>
+end-continuation说明不需要再做额外的计算，直接返回值即可。
+</p>
+<p>
+下面我们将重写上面的value-of求值程序：
+</p>
+<pre><code>
+;; 在初始环境和end-cont里开始求值
+value-of-program : Program → FinalAnswer
+  (define value-of-program
+    (lambda (pgm)
+      (cases program pgm
+        (a-program (exp1)
+          (value-of/k exp1 (init-env) (end-cont))))))
+
+;; 然后我们首先改写value-of里最简单的几种情况
+value-of/k : Exp × Env × Cont → FinalAnswer
+(define value-of/k
+  (lambda (exp env cont)
+    (cases expression exp
+      (const-exp (num) (apply-cont cont (num-val num)))
+      (var-exp (var) (apply-cont cont (apply-env env var)))
+      (proc-exp (var body)
+        (apply-cont cont
+          (proc-val (procedure var body env))))
+      ...)))          
+</code></pre>
+<p>
+letrec创建了一个新的环境，里面加入了函数的绑定，然后在新的环境里对letrec-body进行求值，body的值将作为整个表达式的值传递给闭包继续处理。
+</p>
+
+<pre><code>
+(letrec-exp (p-name b-var p-body letrec-body)
+  (value-of/k letrec-body
+    (extend-env-rec p-name b-var p-body env)
+    cont))
+</code></pre>
+
+<p>
+对于zero?表达式来说，我们首先对参数进行求值，然后将求值结果发送给闭包函数：
+</p>
+<pre><code>
+(zero?-exp (exp1)
+  (value-of/k exp1 env
+    (zero1-cont cont)))
+</code></pre>
+
+<p>
+(zero1-cont cont)具有下面的接口属性：
+</p>
+<pre><code>
+(apply-cont (zero1-cont cont) val)
+= (apply-cont cont
+    (bool-val
+      (zero? (expval->num val))))
+</code></pre>
+<p>let-exp的闭包传递方式是首先对表达式进行求值，然后在闭包函数里对body进行求值，闭包函数将在扩充了表达式求值结果的环境里进行求值：</p>
+<pre><code>
+(let-exp (var exp1 body)
+  (value-of/k exp1 env
+    (let-exp-cont var body env cont)))
+</code></pre>
+<p>let闭包函数具备下面的接口性质：</p>
+<pre><code>
+(apply-cont (let-exp-cont var body env cont) val)
+= (value-of/k body (extend-env var val env) cont)
+</code></pre>
+<p>
+if表达式需要首先对test部分进行求值，然后将求值结果发送给闭包做处理，在闭包里将会根据传递过来的test的bool值选择对then部分还是else部分进行求值，if表达式的改写和闭包接口如下：
+</p>
+<pre><code>
+(if-exp (exp1 exp2 exp3)
+  (value-of/k exp1 env
+    (if-test-cont exp2 exp3 env cont)))
+
+(apply-cont (if-test-cont exp2 exp3 env cont) val)
+= (if (expval->bool val)
+    (value-of/k exp2 env cont)
+    (value-of/k exp3 env cont))
+</code></pre>
+
+<p>下面演示了闭包传递计算的一个过程：</p>
+<pre><code>
+(value-of/k &lt&ltletrec p(x) = x in if t then 3 else 4&gt&gt ρ0 cont0)
+;; letting ρ1 be (extend-env-rec ... ρ0)
+;; 在相同的控制上下文里对letrec-body进行求值
+;; 环境里扩充了函数的绑定
+(value-of/k &lt&ltif t then 3 else 4&gt&gt ρ1 cont0)
+
+;; 首先对test部分进行求值
+(value-of/k &lt&ltt&gt&gt ρ1 (test-cont &lt&lt3&gt&gt &lt&lt4&gt&gt ρ1 cont0))
+
+;; 然后将求值结果发送给闭包
+(apply-cont (test-cont &lt&lt3&gt&gt &lt&lt4&gt&gt ρ1 cont0) (bool-val #t))
+
+;; 根据test的求值结果（true），选择继续对then部分进行求值
+(value-of/k &lt&lt3&gt&gt ρ1 cont0)
+
+;; 然后将then部分的求值结果发送给闭包
+(apply-cont cont0 (num-val 3))
+
+;; 最后是最外围的end-cont，终结计算过程
+(begin (eopl:printf ...) (num-val 3))  
+</code></pre>
+<p>
+diff-exp表达式首先对exp1部分进行求值，然后将第一个参数的求值结果发给a闭包做处理，a闭包里再对另一个参数进行求值，并将结果再传递给b闭包，这样在b闭包里就有了两个参数的值，接下来就可以对两个参数进行相减，并将结果发给外围的闭包：
+</p>
+<pre><code>
+(diff-exp (exp1 exp2)
+  (value-of/k exp1 env
+    (diff1-cont exp2 env cont)))
+
+(apply-cont (diff1-cont exp2 env cont) val1)
+= (value-of/k exp2 env
+    (diff2-cont val1 cont))    
+
+(apply-cont (diff2-cont val1 cont) val2)
+= (let ((num1 (expval->num val1))
+        (num2 (expval->num val2)))
+    (apply-cont cont
+      (num-val (- num1 num2))))    
+</code></pre>
+
+<p>下面举一个具体的例子：</p>
+<pre><code>
+(value-of/k <<-(-(44,11),3)>> ρ0  #(struct:end-cont))
+
+;; 首先对第一个参数-(44,11)进行求值
+(value-of/k <<-(44,11)>> ρ0 #(struct:diff1-cont <<3>> ρ0 #(struct:end-cont)))
+
+;; 将44发送给diff1-cont
+(value-of/k <<44>> ρ0 #(struct:diff1-cont <<11>> ρ0
+                         #(struct:diff1-cont <<3>> ρ0
+                            #(struct:end-cont))))
+
+;; 将44应用到diff1-cont
+(apply-cont
+  #(struct:diff1-cont <<11>> ρ0
+    #(struct:diff1-cont <<3>> ρ0
+      #(struct:end-cont)))
+  (num-val 44))
+
+;; 将11发送给diff2-cont
+(value-of/k <<11>> ρ0
+  #(struct:diff2-cont (num-val 44)
+    #(struct:diff1-cont <<3>> ρ0
+      #(struct:end-cont))))
+
+;; 将11应用到diff2-cont
+(apply-cont 
+  #(struct:diff2-cont (num-val 44)
+    #(struct:diff1-cont <<3>> ρ0
+      #(struct:end-cont)))
+  (num-val 11))
+
+;; 将上一步的结果33发送到diff1-cont
+(apply-cont 
+  #(struct:diff1-cont <<3>> ρ0
+    #(struct:end-cont))
+  (num-val 33))
+
+;; 将3发送给diff2-cont
+(value-of/k <<3>> ρ0
+  #(struct:diff2-cont (num-val 33)
+    #(struct:end-cont)))
+
+;; 将3应用到diff2-cont
+(apply-cont
+  #(struct:diff2-cont (num-val 33)
+    #(struct:end-cont))
+  (num-val 3))
+
+;; 计算-(33,3)，外围只剩end-cont，终结计算
+(apply-cont
+  #(struct:end-cont)
+  (num-val 30))
+</code></pre>
+<p>
+接下来是call-exp，选择首先计算rator，然后将结果发送给rator-cont：
+</p>
+<pre><code>
+(call-exp (rator rand)
+  (value-of/k rator env
+    (rator-cont rand env cont)))
+</code></pre>
+<p>
+rator-cont将在一个合适的闭包里对操作数进行求值：
+</p>
+<pre><code>
+(apply-cont (rator-cont rand env cont) val1)
+= (value-of/k rand env
+    (rand-cont val1 cont))
+</code></pre>
+
+<p>
+当rand-cont接收到操作数的求值结果后，将进行函数的调用：
+</p>
+<pre><code>
+(apply-cont (rand-cont val1 cont) val2)
+= (let ((proc1 (expval->proc val1)))
+    (apply-procedure/k proc1 val2 cont))
+</code></pre>
+<p>
+最后，修改apply-procedure以适应闭包传递风格：
+</p>
+<pre><code>
+apply-procedure/k : Proc × ExpVal × Cont → FinalAnswer
+(define apply-procedure/k
+  (lambda (proc1 val cont)
+    (cases proc proc1
+      (procedure (var body saved-env)
+        (value-of/k body
+          (extend-env var val saved-env)
+          cont)))))
+</code></pre>
+
+<h3>Trampolined解释器</h3>
+有人可能想把上面的闭包传递解释器改用过程式编程语言实现，使用一个数据结构表示闭包来避免高阶函数。然而大多数过程式编程语言很难实现这个翻译过程，因为每次函数调用都将产生栈空间的增长，然而闭包传递解释器将会一直到end-cont才会返回，在此时间内栈空间将一直增长！
+
+</body>
+</html>

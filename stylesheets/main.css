@@ -5,8 +5,42 @@ body {
     padding: 2% 5% 5% 5%;
     width: 50%;
     line-height: 150%;
-    border: 1px solid LightGrey;
+    /*border: 1px solid LightGrey;*/
 }
+
+.wrapper {
+    background: #e8ecee;
+}
+
+.semphasize {
+     font-size: 19px;
+}
+
+.memphasize {
+     font-size: 20px;
+}
+
+.sterm {
+    font-size: 20px;
+}
+
+.mterm {
+    font-size: 20px;
+    font-weight:bolder;
+}
+
+.bterm {
+    font-size: 20px;
+    font-weight:bolder;
+    color:#F00;
+}
+
+blockquote {
+    margin:.8em 0;
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: rgb(208, 229, 242);    
+};
 
 H1 {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
@@ -18,7 +52,7 @@ H2 {
     margin-bottom: 60px;
     margin-bottom: 40px;
     padding: 5px;
-    border-bottom: 2px LightGrey solid;
+    /*border-bottom: 2px LightGrey solid;*/
     width: 90%;
     line-height: 150%;
     color: DarkGreen;
