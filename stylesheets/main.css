@@ -9,6 +9,12 @@ body {
     /*border: 1px solid LightGrey;*/
 }
 
+.middle {
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+};
+
 .wrapper {
     background: #e8ecee;
 }
@@ -38,7 +44,7 @@ body {
 
 blockquote {
     margin:.8em 0;
-    border-left-width: 3px;
+    border-left-width: 2px;
     border-left-style: solid;
     border-left-color: rgb(208, 229, 242);    
 };
@@ -46,10 +52,13 @@ blockquote {
 H1 {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
     text-align: center;
+    margin-left:auto;
+    margin-right:auto; 
 }
 
 H2 {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
+    font-size: 40px;
     margin-bottom: 60px;
     margin-bottom: 40px;
     padding: 5px;
@@ -58,6 +67,8 @@ H2 {
     line-height: 150%;
     color: DarkGreen;
     text-align: center;
+    margin-left:auto;
+    margin-right:auto;    
 }
 
 
@@ -78,7 +89,7 @@ H4 {
     margin-bottom: 30px;
     border-bottom: 1px LightGrey solid;
     width: 80%;
-    line-height: 150%;
+    line-height: 120%;
     color: DarkBlue;
 }
 
