@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2024-12-10 周二 16:13 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Embeddings of gromov hyperbolic spaces</title>
+<meta name="author" content="sunpy" />
+<meta name="generator" content="Org Mode" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+html,button,input,select,textarea {  color: #484C66;}html {  font-size: 90%;  line-height: 1.4;}*,*:before,*:after {  -moz-box-sizing: border-box;  -webkit-box-sizing: border-box;  box-sizing: border-box;}a {  white-space: pre;  white-space: pre-wrap;  white-space: pre-line;  white-space: -pre-wrap;  white-space: -o-pre-wrap;  white-space: -moz-pre-wrap;  white-space: -hp-pre-wrap;  word-wrap: break-word;  text-decoration: none;}a:hover {  color: #0A4C89;}/* * Remove text-shadow in selection highlight: h5bp.com/i * These selection rule sets have to be separate. * Customize the background color to match your design. */::-moz-selection {  background: #0A4C89;  color: #FFF;  text-shadow: none;}::selection {  background: #0A4C89;  color: #FFF;  text-shadow: none;}/* * A better looking default horizontal rule */hr {  display: block;  height: 1px;  border: 0;  border-top: 1px dashed #CCC;  margin: 1em 0;  padding: 0;}/* * Remove the gap between images, videos, audio and canvas and the bottom of * their containers: h5bp.com/i/440 */audio,canvas,img,video {  vertical-align: middle;}/* * Remove default fieldset styles. */fieldset {  border: 0;  margin: 0;  padding: 0;}/* * Allow only vertical resizing of textareas. */textarea {  resize: vertical;}/* ==========================================================================   Author's custom styles   ========================================================================== */.todo,.done,.tag {  font-family: "Source Pro", Monaco, "Courier New", monospace;  padding: 0 0.3em;  background-color: #EEE;  border: 1px solid #CCC;}.todo {  color: #DD4433;}.done {  color: #44934B;}.tag {  font-size: 80%;  font-weight: normal;  margin: 0 0.3em;  display: none;}.timestamp {  color: #BEBEBE;}.timestamp-kwd {  color: #5F9EA0;}.right {  margin-left: auto;  margin-right: 0px;  text-align: right;}.left {  margin-left: 0px;  margin-right: auto;  text-align: left;}.center {  margin-left: auto;  margin-right: auto;  text-align: center;}.underline {  text-decoration: underline;}#postamble p,#preamble p {  font-size: 90%;  margin: .2em;}pre,code {  font-family: "Source Pro", Monaco, "Courier New", monospace;  padding-left: 0.3em;  padding-right: 0.3em;}pre {  font-size: 90%;  padding: 8pt;  overflow: auto;  white-space: pre;  word-wrap: normal;}pre.src {  position: relative;}pre.src:before {  display: none;  position: absolute;  background-color: #FFF;  top: 0.5em;  right: 0.5em;  padding: 4px;  border: 1px solid #CCC;}pre.src-sh:before {  content: "Shell Script";}pre.src-bash:before {  content: "Bash Script";}pre.src-emacs-lisp:before {  content: "Emacs Lisp";}pre.src-R:before {  content: "R";}pre.src-perl:before {  content: "Perl";}pre.src-java:before {  content: "Java";}pre.src-sql:before {  content: "SQL";}pre.src-c:before {  content: "C";}pre.src-cpp:before {  content: "C++";}pre.src-html:before {  content: "HTML";}table {  border-collapse: collapse;  display: block;  overflow-x: auto;}caption.t-above {  caption-side: top;}caption.t-bottom {  caption-side: bottom;}td, th {  vertical-align: top;  border: 1px solid #CCC;  padding: 0.5em;}th.right {  text-align: center;}th.left {  text-align: center;}th.center {  text-align: center;}td.right {  text-align: right;}td.left {  text-align: left;}td.center {  text-align: center;}dt {  font-weight: bold;}#footnotes {  border-top: 5px solid #0A4C89;  margin-bottom: 5em;}#footnotes h2 {  display: none;}#text-footnotes {  margin-top: 1em;}.footpara:nth-child(2) {  display: inline;}.footpara {  display: block;}.footdef sup:before {  content: "[";}.footdef sup:after {  content: "]";}.footdef p {  display: inline;}figure {  margin: 0;}figure img {  max-width: 100%;}figcaption {  text-align: center;  font-size: 0.8rem;}.inlinetask {  padding: 10px;  border: 2px solid gray;  margin: 10px;  background: #ffffcc;}#org-div-home-and-up {  text-align: right;  font-size: 70%;  white-space: nowrap;}textarea {  overflow-x: auto;}.linenr {  font-size: smaller;}.code-highlighted {  background-color: #ffff00;}.org-info-js_info-navigation {  border-style: none;}#org-info-js_console-label {  font-size: 10px;  font-weight: bold;  white-space: nowrap;}.org-info-js_search-highlight {  background-color: #ffff00;  color: #000000;  font-weight: bold;}p.verse,blockquote {  margin: 0;  padding: 0;  padding-left: 3%;  border-left: 5px solid #0A4C89;}body {  font-family: Lora, Palatino, Georgia, serif;  width: 92%;  max-width: 1024px;  margin: 0 auto;  background-color: #FFF;}h2 {  line-height: 1.62em;}.title {  margin: 0 0 2em 0;  line-height: 2em;  border-bottom: 5px solid #0A4C89;  text-align: center;}#postamble {  font-size: 80%;  line-height: 1.4em;  text-align: right;}h1, h2, h3, h4, h5, h6 {  font-family: "Source Sans Pro", sans-serif;  color: #222;}.outline-2 {  margin-bottom: 4em;}.outline-2 h2 {  border-bottom: 1px solid #CCC;}.outline-text-2 code, pre {  background-color: #EEE;}#table-of-contents {  display: none;  margin-left: 0.5em;}#text-table-of-contents ul {  padding-left: 1.8em;}#text-table-of-contents li {  list-style-type: circle;  margin: 0.4em 0;}#text-table-of-contents ul ul {  margin: 0;}#text-table-of-contents li li {  font-weight: normal;  font-size: 90%;  margin: 0;}#content {  overflow: hidden;  *zoom: 1;}/* ==========================================================================   EXAMPLE Media Queries for Responsive Design.   These examples override the primary ('mobile first') styles.   Modify as content requires.   ========================================================================== */@media only screen and (min-width: 35em) {  /* Style adjustments for viewports that meet the condition */}@media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {  /* Style adjustments for high resolution devices */}/* ==========================================================================   Print styles.   Inlined to avoid required HTTP connection: h5bp.com/r   ========================================================================== */@media print {  * {    background: transparent !important;    color: #000 !important;    /* Black prints faster: h5bp.com/s */    box-shadow: none !important;    text-shadow: none !important;  }  a,  a:visited {    text-decoration: underline;  }  a[href]:after {    content: " (" attr(href) ")";  }  abbr[title]:after {    content: " (" attr(title) ")";  }  /*   * Don't show links for images, or javascript/internal links   */  .ir a:after,  a[href^="javascript:"]:after,  a[href^="#"]:after {    content: "";  }  pre,  blockquote {    /* border: 1px solid #999; */    page-break-inside: avoid;  }  thead {    display: table-header-group;    /* h5bp.com/t */  }  tr,  img {    page-break-inside: avoid;  }  img {    max-width: 100% !important;  }  @page {    margin: 0.5cm;  }  p,  h2,  h3 {    orphans: 3;    widows: 3;  }  h2,  h3 {    page-break-after: avoid;  }  #table-of-contents {    display: block;    width: initial;    border: none;  }  #table-of-contents a {    text-decoration: none;  }}/* large screen */@media screen and (min-width: 40rem) {  html {    font-size: 100%;  }  #table-of-contents {    display: block;    padding: 1em;    width: 32%;    min-width: 18em;    float: right;    background-color: #EEE;    position: relative;    /* required by z-index */    z-index: 5000;    border: 1px solid #CCC;  }  .tag {    display: initial;  }}
+</style>
+
+        <style>
+        /* From: https://endlessparentheses.com/public/css/endless.css */
+        /* See also: https://meta.superuser.com/questions/4788/css-for-the-new-kbd-style */
+        kbd
+        {
+          -moz-border-radius: 6px;
+          -moz-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+          -webkit-border-radius: 6px;
+          -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+          background-color: #f7f7f7;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+          color: #333;
+          display: inline-block;
+          font-family: 'Droid Sans Mono', monospace;
+          font-size: 80%;
+          font-weight: normal;
+          line-height: inherit;
+          margin: 0 .1em;
+          padding: .08em .4em;
+          text-shadow: 0 1px 0 #fff;
+          word-spacing: -4px;
+        
+          box-shadow: 2px 2px 2px #222; /* MA: An extra I've added. */
+        }
+        </style>
+        <link rel="stylesheet" type="text/css" href="https://alhassy.github.io/org-special-block-extras/tooltipster/dist/css/tooltipster.bundle.min.css"/>
+        
+        <link rel="stylesheet" type="text/css" href="https://alhassy.github.io/org-special-block-extras/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-punk.min.css" />
+        
+        <script type="text/javascript">
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape('%3Cscript src="https://code.jquery.com/jquery-1.10.0.min.js"%3E%3C/script%3E'));
+            }
+        </script>
+        
+         <script type="text/javascript"            src="https://alhassy.github.io/org-special-block-extras/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+        
+          <script>
+                 $(document).ready(function() {
+                     $('.tooltip').tooltipster({
+                         theme: 'tooltipster-punk',
+                         contentAsHTML: true,
+                         animation: 'grow',
+                         delay: [100,500],
+                         // trigger: 'click'
+                         trigger: 'custom',
+                         triggerOpen: {
+                             mouseenter: true
+                         },
+                         triggerClose: {
+                             originClick: true,
+                             scroll: true
+                         }
+         });
+                 });
+             </script>
+        
+        <style>
+           abbr {color: red;}
+        
+           .tooltip { border-bottom: 1px dotted #000;
+                      color:red;
+                      text-decoration: none;}
+        </style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<header>
+<h1 class="title">Embeddings of gromov hyperbolic spaces</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0fe5694">1. Hightlights</a></li>
+<li><a href="#org062b38e">2. Definition: Geodesic Metric Space</a>
+<ul>
+<li><a href="#orgcff0df2">2.1. Boundary</a></li>
+</ul>
+</li>
+<li><a href="#org330e8f8">3. Boundary Operator \(\partial X\)</a></li>
+<li><a href="#org77b838a">4. Embedding into a Geodesic Metric Space</a></li>
+<li><a href="#org1455233">5. The Metric Space Con(Z)</a>
+<ul>
+<li><a href="#org24a8a7c">5.1. Theorem 7.4&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org9475feb">6. The Relation of X and Con(X)</a>
+<ul>
+<li><a href="#orgcab764b">6.1. Theorem 8.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org625d790">7. Growth and Assouad Dimension</a>
+<ul>
+<li><a href="#orgad66536">7.1. <span class="done DONE">DONE</span> Assouad Dimension VS Doubling Constant</a>
+<ul>
+<li><a href="#org9a042b6">7.1.1. Lemma 9.4 Finite Assouad Dimenson VS Doubling&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theory">theory</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org9633a7b">7.2. Assouad dimension lower bound estimation</a>
+<ul>
+<li><a href="#orga7ab187">7.2.1. Proposition 6.1.5</a></li>
+</ul>
+</li>
+<li><a href="#orga48b5b4">7.3. Theorem 9.1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></a></li>
+<li><a href="#orgb3f82d7">7.4. Theorem 9.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org7b20924">8. Embedding into Real Hyperbolic Space</a>
+<ul>
+<li><a href="#org078d673">8.1. Upper Half Space Model&#xa0;&#xa0;&#xa0;<span class="tag"><span class="definition">definition</span></span></a></li>
+<li><a href="#org549f49b">8.2. hull(A)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="definition">definition</span></span></a></li>
+<li><a href="#org3cc718b">8.3. Proposition 10.1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></a></li>
+<li><a href="#org1421f0d">8.4. Theorem 10.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+
+
+<div id="outline-container-org0fe5694" class="outline-2">
+<h2 id="org0fe5694"><span class="section-number-2">1.</span> Hightlights</h2>
+<div class="outline-text-2" id="text-1">
+<div style="padding: 1em;background-color: #CCFFCC;border-radius: 15px;font-size: 0.9em;"> <h3>Highlights</h3> 
+<ul class="org-ul">
+<li>刻画了当Gromov双曲度量空间具有bounded growth时，其与双曲几何空间是rougly similar的 <br></li>
+
+<li>GAFA是四大以下顶刊了，韦东奕也发<br></li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org062b38e" class="outline-2">
+<h2 id="org062b38e"><span class="section-number-2">2.</span> Definition: Geodesic Metric Space</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgcff0df2" class="outline-3">
+<h3 id="orgcff0df2"><span class="section-number-3">2.1.</span> Boundary</h3>
+<div class="outline-text-3" id="text-2-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+The Gromov boundary has several important properties. One of the most frequently used properties in group theory is the following: if a group \(G\) acts geometrically on a \(\delta\) -hyperbolic space, then \(G\) is hyperbolic group and \(G\) and \(X\) have homeomorphic Gromov boundaries.
+One of the most important properties is that it is a quasi-isometry invariant; that is, if two hyperbolic metric spaces are quasi-isometric, then the quasi-isometry between them gives a homeomorphism between their boundaries. This is important because homeomorphisms of compact spaces are much easier to understand than quasi-isometries of spaces.
+</p>
+
+
+</details>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org330e8f8" class="outline-2">
+<h2 id="org330e8f8"><span class="section-number-2">3.</span> Boundary Operator \(\partial X\)</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+chatgpt
+</p>
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+The Gromov boundary is a concept in geometric group theory and hyperbolic geometry. In particular, it is a boundary of a hyperbolic space, which captures the behavior of geodesics as they "escape to infinity". Each point in the Gromov boundary represents a "direction" in which a geodesic ray can escape to infinity in the hyperbolic space. The boundary is equipped with a natural topology called the Gromov topology, which is induced by the so-called "visual metric" on the hyperbolic space.
+</p>
+
+
+
+</details>
+</div>
+</div>
+
+<div id="outline-container-org77b838a" class="outline-2">
+<h2 id="org77b838a"><span class="section-number-2">4.</span> Embedding into a Geodesic Metric Space</h2>
+<div class="outline-text-2" id="text-4">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Theorem 4.1
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+Let \(X\) be a \(\delta\) -hyperbolic metric space.
+Then there is an isometric embedding \(i:X\to Y\) of \(X\) into a complete \(\delta\) -hyperbolic geodesic metric space \(Y\).
+</p>
+
+
+</details>
+<p>
+<br>
+</p>
+<div style="padding: 1em;background-color: #CCFFCC;border-radius: 15px;font-size: 0.9em;"> <h3></h3> 
+<p>
+generalize statements about geodesic Gromov hyperbolic metric spaces to the non-geodesic setting.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1455233" class="outline-2">
+<h2 id="org1455233"><span class="section-number-2">5.</span> The Metric Space Con(Z)</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org24a8a7c" class="outline-3">
+<h3 id="org24a8a7c"><span class="section-number-3">5.1.</span> Theorem 7.4&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></h3>
+<div class="outline-text-3" id="text-5-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+Suppose that \(f:X\to Y\) is a power quasisymmetry of bounded metric spaces \(X, Y\). 
+Then \(\hat{f}:Con(X)\to Con(Y)\) is a rough quasi-isometry.
+If \(f\) is a snowflake or bilipschitz map, then \(\hat{f}\) is a rough similarity or a rough isometry, respectively.
+</p>
+
+
+</details>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org9475feb" class="outline-2">
+<h2 id="org9475feb"><span class="section-number-2">6.</span> The Relation of X and Con(X)</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orgcab764b" class="outline-3">
+<h3 id="orgcab764b"><span class="section-number-3">6.1.</span> Theorem 8.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></h3>
+<div class="outline-text-3" id="text-6-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+Suppose \(X\) is a visual Gromov Hyperbolic Metric Space. Then \(X\) and \(Con(\partial X)\) are rougly similar.
+</p>
+
+
+</details>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org625d790" class="outline-2">
+<h2 id="org625d790"><span class="section-number-2">7.</span> Growth and Assouad Dimension</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgad66536" class="outline-3">
+<h3 id="orgad66536"><span class="section-number-3">7.1.</span> <span class="done DONE">DONE</span> Assouad Dimension VS Doubling Constant</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>CLOSING NOTE <span class="timestamp-wrapper"><span class="timestamp">&lt;12/04/23 周一 09:58&gt;</span></span> <br>
+花20大洋直接淘宝买了这里两本电子书</li>
+</ul>
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Assouad dimension VS Doubling
+                      </font>
+                    </strong>
+                  </summary>
+<ul class="org-ul">
+<li>It can be shown that a metric space has finite Assouad dimension if and only if it is doubling.</li>
+
+<li>This conclusion is proved in <a href="20231129223658-on_the_upper_regularity_dimensions_of_measures.html#ID-6cb856c4-e6f6-4c7a-b6fd-9367f997e309">On the upper regularity dimensions of measures</a></li>
+
+<li>Actually the real proof can only be found in: <i>J. C. Robinson. Dimensions, Embeddings, and Attractors, Cambridge University Press, Cambridge, (2011).</i></li>
+</ul>
+<p>
+<a href="20231204094622-dimensions_embeddings_and_attractors.html#ID-20b0a29f-1aaf-4bf5-ad9e-e2c3b13df536">Dimensions, embeddings, and attractors</a>
+</p>
+
+
+
+
+</details>
+</div>
+
+<div id="outline-container-org9a042b6" class="outline-4">
+<h4 id="org9a042b6"><span class="section-number-4">7.1.1.</span> Lemma 9.4 Finite Assouad Dimenson VS Doubling&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theory">theory</span></span></h4>
+<div class="outline-text-4" id="text-7-1-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+A set \(A\subset(X,\rho)\) is homogeneus iff it is doubling
+</p>
+
+<p>
+<i>Proof</i>
+a homogeneous set is doubling is immediate.
+suppose that \(N_A(r,r/2)\le K\). Given \(0<\rho < r\), choose \(n\) such that \(r/2^n \le \rho < r/2^{n-1}\); then
+\[N_A(r,\rho)\le N_A(r,r/2)\cdot N_A(r/2,r/4)\cdots N_A(r/2^{n-1} , r/2^n)\le K^n\]
+</p>
+
+<p>
+since \(n-1\le log_2(r/\rho)\) it follows that
+\[N_A(r, \rho)\le K\cdot K^{n-1} \le K(r/\rho)^{log_2K }\]
+</p>
+
+
+</details>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9633a7b" class="outline-3">
+<h3 id="org9633a7b"><span class="section-number-3">7.2.</span> Assouad dimension lower bound estimation</h3>
+<div class="outline-text-3" id="text-7-2">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Assouad dimension lower bound estimation
+                      </font>
+                    </strong>
+                  </summary>
+<ul class="org-ul">
+<li>One of the most powerful tools for providing lower bounds for the Assouad dimension of a set is the well-known result of Mackay and Tyson concerning weak tangents: <i>Conformal dimension. Theory and application</i></li>
+
+<li><a href="20231204095335-conformal_dimension_theory_and_application.html#ID-93afb4a6-a68a-4ce2-87e1-25f2328ecc2e">Conformal dimension: theory and application</a></li>
+</ul>
+
+
+</details>
+</div>
+
+<div id="outline-container-orga7ab187" class="outline-4">
+<h4 id="orga7ab187"><span class="section-number-4">7.2.1.</span> Proposition 6.1.5</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<p>
+If \(W\) is a <i>weak tangent</i> to \(Z\), then \(dim_A W \le dim_A Z\).
+</p>
+
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Proof
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+\(\delta_m\): the sequence of scales associated to the weak tangent \(W\).
+Suppose that \(dim_A Z< \alpha < dim_A W\). Then for all \(C>0\), there exist \(0<r<R\)
+</p>
+
+<p>
+and a set \(S\subset W\), where \(S\) is an \(r\) -seperated set in some ball of radius \(R\) in \(W\) whose cardinality satisfies:
+</p>
+
+<p>
+\[\#S\ge C(R/r)^\alpha\].
+</p>
+
+<p>
+For sufficiently large \(m\), we can use \(S\) to find a $&delta;<sub>m</sub> r/2$-seperated set \(T_m\) in some ball of radius \(2\delta_m R\) in \(Z\), whose cardinality is the same as the cardinality of \(S\). In particular,
+</p>
+
+<p>
+\[\# T_m=\# S\ge C\cdot 4^{-\alpha}\left(\frac{2\delta_m R}{\delta_m r/2}\right)^{\alpha}\].
+</p>
+
+<p>
+For sufficiently large \(C\), this contradicts the inequality \(dim_A Z<\alpha\).
+</p>
+
+
+</details>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga48b5b4" class="outline-3">
+<h3 id="orga48b5b4"><span class="section-number-3">7.3.</span> Theorem 9.1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></h3>
+<div class="outline-text-3" id="text-7-3">
+<div style="padding: 1em;background-color: #CCFFCC;border-radius: 15px;font-size: 0.9em;"> <h3>Assouad Theorem</h3> 
+<p>
+Let \((Z,d)\) be a metric space with finite Assouad dimenson, and let \(p\in (0, 1)\).
+Then there is some integer \(n\) such that the metric space \((Z, d^p)\) admits a bilipschitz embedding into \(\mathbb{R}^n\).
+</p>
+
+</div>
+<p>
+<br>
+</p>
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         comments
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+从metric角度的性质导出（欧式空间）几何性质
+</p>
+
+
+</details>
+</div>
+</div>
+
+<div id="outline-container-orgb3f82d7" class="outline-3">
+<h3 id="orgb3f82d7"><span class="section-number-3">7.4.</span> Theorem 9.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></h3>
+<div class="outline-text-3" id="text-7-4">
+<div style="padding: 1em;background-color: #CCFFCC;border-radius: 15px;font-size: 0.9em;"> <h3></h3> 
+<p>
+Let \(X\) be a Grmov hyperbolic geodesic metric space with bounded growth at some scale.<br>
+Then the Assouad dimension of \(\partial X\) is finite.
+</p>
+
+</div>
+
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Comments
+                      </font>
+                    </strong>
+                  </summary>
+<ul class="org-ul">
+<li>Gromov Hyperbolic Geodesic Metric Space<br>
+<ol class="org-ol">
+<li>bounded growth at some scale are all complete simply-connected Riemannian \(n\) -manifolds \(X\) with sectional curvature \(\kappa\) satisfying \(-b^2\le \kappa\le -a^2<0\).<br></li>
+<li>Complex Hyperbolic Space</li>
+</ol></li>
+
+<li>\(X\) 的一个较弱的条件可以导出边界 \(\partial X\) 一个较强的结论</li>
+<li>用了很硬核的分析技巧</li>
+</ul>
+
+
+</details>
+
+<p>
+证明过程参考了 Gromov 写的 《Hyperbolic Groups》中的  <a href="Gromov1987HyperbolicGroups.html#MissingReference">Proposition 7.3.2</a>
+</p>
+
+
+<p>
+证明过程被 <a href="Krauthgamer2006AlgorithmsonNegativelyCurvedSpaces.html#MissingReference"><b>Theorem 3.3</b></a> 参考
+</p>
+
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Theorem 9.2的Assouad Dimension量化版
+                      </font>
+                    </strong>
+                  </summary>
+
+<p>
+\[n\le N^m = N^{1+\frac{R*}{R-r}}\le C(R,r,N,\delta)\left(\frac{\beta}{\alpha}\right)^{C(R,r,N,\delta)}\]
+</p>
+
+<p>
+plug in \(R^*=log(\frac{\beta}{\alpha})+C(\delta)\)
+</p>
+
+<p>
+\[N^{1+\frac{R*}{R-r}} = N^{^{}1+\frac{log(\frac{\beta}{\alpha})+C(\delta)}{R-r}}\]
+</p>
+
+<p>
+\[=N^{1+\frac{C(\delta)}{R-r}}\cdot N^{log\left(\left(\frac{\beta}{\alpha}\right)^{(R-r)^{-1}}\right)}\]
+</p>
+
+<p>
+To compute constant \(K\) and the exponent \(s\):
+</p>
+
+<p>
+let \[\left(\frac{\beta}{\alpha}\right)^s=N^{log\left(\left(\frac{\beta}{\alpha}\right)^{(R-r)^{-1}}\right)}\]
+</p>
+
+<p>
+\[s\cdot log\left(\frac{\beta}{\alpha}\right)=\frac{logN}{R-r}\cdot log\left(\frac{\beta}{\alpha}\right)\]
+</p>
+
+<p>
+then we can get \[s=\frac{logN}{R-r}\]
+</p>
+
+<p>
+the upper bound is further simplified to
+\[N^{1+\frac{C(\delta)}{R-r}}\cdot \left(\frac{\beta}{\alpha}\right)^{\frac{logN}{R-r}}\]
+</p>
+
+<p>
+recall the definition of <i>Assouad Dimension</i>
+</p>
+
+<p>
+\[s=\frac{logN}{R-r}, K=N^{1+\frac{C(\delta)}{R-r}}\]
+</p>
+
+
+
+</details>
+
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Theorem 9.2的Doubling Constant量化版
+                      </font>
+                    </strong>
+                  </summary>
+
+<p>
+while in <a href="Krauthgamer2006AlgorithmsonNegativelyCurvedSpaces.html#ID-7f6159e6-6fde-4a9b-ac67-be10e73cfdfa">Algorithms on negatively curved spaces</a>, the condition stated in <i>local geometry</i>.
+</p>
+
+<p>
+Luckily, a straightforward corollary can be employed to perform transformation between these two definitions:
+</p>
+
+<p>
+\[B\left(mR-(m-1)r\right)\sim N^m \cdot B(r)\]
+</p>
+
+<p>
+we want to deduce the equivalent expression in local geometry:
+</p>
+
+<p>
+\[B(R_0)\sim \lambda_0 \cdot B(\frac{R_0}{2})\]
+</p>
+
+<p>
+let \(r=\frac{R_0}{2}\)
+</p>
+
+<p>
+\[mR-(m-1)r=R_0\]
+</p>
+
+<p>
+\[m(R-r)+r=R_0\]
+</p>
+
+<p>
+\[m=\frac{R_0-r}{R-r}\]
+</p>
+
+<p>
+\[m=\frac{r}{R-r}\]
+</p>
+
+<p>
+then \(\lambda_0 = N^m\)
+</p>
+
+<p>
+\[log\lambda_0 = m logN\]
+</p>
+
+<p>
+\[log\lambda_0 = \frac{rlogN}{R-r}\]
+</p>
+
+<p>
+combined with the result: \(Dim_A(\partial X)=O\left(\frac{logN}{R-r}\right)\)
+</p>
+
+<p>
+then \(Dim_A(\partial X)=O\left(\frac{2log\lambda_0}{R_0}\right)\)
+</p>
+
+<p>
+according to <a href="20231204094622-dimensions_embeddings_and_attractors.html#MissingReference">Lemma 9.4 Finite Assouad Dimenson VS Doubling</a>:
+</p>
+
+<p>
+\[Dim_A(\partial X)=log_2 K\]
+</p>
+
+<p>
+wherein \(K\) denotes the doubling constant.
+</p>
+
+<p>
+then, combined all above together:
+</p>
+
+<p>
+\[K=\lambda(\partial X)=2^{Dim_A(\partial X)}=2^{O\left(\frac{2log\lambda_0}{R_0}\right)}\]
+</p>
+
+<p>
+compute the exponent again:
+</p>
+
+<p>
+let \(2^{O\left(\frac{2log\lambda_0}{R_0}\right)}=\lambda_0^x\)
+</p>
+
+<p>
+\[\frac{2log2\cdot log\lambda_0}{R_0}=xlog\lambda_0\]
+</p>
+
+<p>
+\[x=\frac{2log2}{R_0}\]
+</p>
+
+<p>
+finally, we get:
+</p>
+
+<p>
+\[\lambda(\partial X) =\lambda_0^{O\left(1/R_0 \right)}\]
+</p>
+
+
+
+</details>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org7b20924" class="outline-2">
+<h2 id="org7b20924"><span class="section-number-2">8.</span> Embedding into Real Hyperbolic Space</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org078d673" class="outline-3">
+<h3 id="org078d673"><span class="section-number-3">8.1.</span> Upper Half Space Model&#xa0;&#xa0;&#xa0;<span class="tag"><span class="definition">definition</span></span></h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+\[\mathbb{H}^n=\{(x_1,\cdots, x_n)\in\mathbb{R}^n:x_n>0\}\]
+</p>
+
+<p>
+equipped with the Riemannian metric given by the length elementary
+</p>
+
+<p>
+\[ds^2=\frac{1}{x^2_n}(dx_1^2+\cdots+dx_n^2)\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org549f49b" class="outline-3">
+<h3 id="org549f49b"><span class="section-number-3">8.2.</span> hull(A)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="definition">definition</span></span></h3>
+<div class="outline-text-3" id="text-8-2">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+if \(A\subset\mathbb{H}^n\cup \partial\mathbb{H}^n\), let \(hull(A)\subset\mathbb{H}^n\) be the intersection of all closed half-spaces \(H\subset \mathbb{H}^n\) such that \(A\subset H\cup\partial H\).
+</p>
+
+
+</details>
+</div>
+</div>
+
+<div id="outline-container-org3cc718b" class="outline-3">
+<h3 id="org3cc718b"><span class="section-number-3">8.3.</span> Proposition 10.1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></h3>
+<div class="outline-text-3" id="text-8-3">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+(1) Let \(A\subset \mathbb{H}^n\). For each \(p\in hull(A)\), there exists a point \(q\in\mathbb{H}^n\) that lies on a geodesic segment with endpoints in \(A\) and satisfies \(d_h(p,q)\le O(1)\).<br>
+(2) Let \(A\subset \partial\mathbb{H}^n\) be a set with more that one point, and fix \(o\in hull(A)\). For each \(p\in hull(A)\), there exists a point \(q\in\mathbb{H}^n\) that lies on a geodesic ray from \(o\) to some point in \(A\) and satisfies \(d_h(p,q)\le O(1)\).<br>
+(3)Let \(Z\subset \mathbb{R}^{n-1}\subset\partial\mathbb{H}^n\) be a compact set containing more than one point. Then \(hull(Z)\sim Con(Z)\).
+</p>
+
+
+</details>
+</div>
+</div>
+
+<div id="outline-container-org1421f0d" class="outline-3">
+<h3 id="org1421f0d"><span class="section-number-3">8.4.</span> Theorem 10.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="theorem">theorem</span></span></h3>
+<div class="outline-text-3" id="text-8-4">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+Let \(X\) be a Gromov hyperbolic geodesic metric space with bounded growth at some scale.
+Then there exists an integer \(n\) such that \(X\) is roughly similar to a convex subset of hyperbolic \(n\) -space \(\mathbb{H}^n\).
+</p>
+
+
+</details>
+
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Proof
+                      </font>
+                    </strong>
+                  </summary>
+<ul class="org-ul">
+<li>\(X\) is visual, and so \(X\sim Con((\partial X, d))\) by <a href="#orgcab764b">Theorem 8.2</a>. \(d\) is some fixed metric in the canonical gauge on \(\partial X\).<br></li>
+
+<li>By <a href="#org24a8a7c">Theorem 7.4</a> applied to snowflake maps, \(Con((\partial X, d))\sim Con((\partial X, d^{1/2}))\).</li>
+
+<li><a href="#orgb3f82d7">Theorem 9.2</a> shows that \(\partial X\) has finite Assouad dimension.</li>
+
+<li>By <a href="#orga48b5b4">Theorem 9.1</a>, \((\partial X, d^{1/2})\) admits a bilipschitz embedding into \(\mathbb{R}^{n-1}\) for sufficiently large \(n\).</li>
+
+<li>By <a href="#org24a8a7c">Theorem 7.4</a> for bilipschitz maps, \(Con((\partial X, d^{1/2}))\sim Con(Z)\).</li>
+
+<li><a href="#org3cc718b">Proposition 10.1</a> shows that \(Con(Z)\sim hull(Z)\). Therefore, \(X\sim hull(Z)\subset\mathbb{H}^n\), proving the assertion in this case.</li>
+</ul>
+
+
+</details>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022/05/01</p>
+<p class="author">Author: sunpy</p>
+<p class="date">Created: 2024-12-10 周二 16:13</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
