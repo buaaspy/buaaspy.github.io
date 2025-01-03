@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-01-02 周四 23:02 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hyperbolic metric spaces and stochastic embeddings</title>
+<meta name="author" content="sunpy" />
+<meta name="generator" content="Org Mode" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+html,button,input,select,textarea {  color: #484C66;}html {  font-size: 90%;  line-height: 1.4;}*,*:before,*:after {  -moz-box-sizing: border-box;  -webkit-box-sizing: border-box;  box-sizing: border-box;}a {  white-space: pre;  white-space: pre-wrap;  white-space: pre-line;  white-space: -pre-wrap;  white-space: -o-pre-wrap;  white-space: -moz-pre-wrap;  white-space: -hp-pre-wrap;  word-wrap: break-word;  text-decoration: none;}a:hover {  color: #0A4C89;}/* * Remove text-shadow in selection highlight: h5bp.com/i * These selection rule sets have to be separate. * Customize the background color to match your design. */::-moz-selection {  background: #0A4C89;  color: #FFF;  text-shadow: none;}::selection {  background: #0A4C89;  color: #FFF;  text-shadow: none;}/* * A better looking default horizontal rule */hr {  display: block;  height: 1px;  border: 0;  border-top: 1px dashed #CCC;  margin: 1em 0;  padding: 0;}/* * Remove the gap between images, videos, audio and canvas and the bottom of * their containers: h5bp.com/i/440 */audio,canvas,img,video {  vertical-align: middle;}/* * Remove default fieldset styles. */fieldset {  border: 0;  margin: 0;  padding: 0;}/* * Allow only vertical resizing of textareas. */textarea {  resize: vertical;}/* ==========================================================================   Author's custom styles   ========================================================================== */.todo,.done,.tag {  font-family: "Source Pro", Monaco, "Courier New", monospace;  padding: 0 0.3em;  background-color: #EEE;  border: 1px solid #CCC;}.todo {  color: #DD4433;}.done {  color: #44934B;}.tag {  font-size: 80%;  font-weight: normal;  margin: 0 0.3em;  display: none;}.timestamp {  color: #BEBEBE;}.timestamp-kwd {  color: #5F9EA0;}.right {  margin-left: auto;  margin-right: 0px;  text-align: right;}.left {  margin-left: 0px;  margin-right: auto;  text-align: left;}.center {  margin-left: auto;  margin-right: auto;  text-align: center;}.underline {  text-decoration: underline;}#postamble p,#preamble p {  font-size: 90%;  margin: .2em;}pre,code {  font-family: "Source Pro", Monaco, "Courier New", monospace;  padding-left: 0.3em;  padding-right: 0.3em;}pre {  font-size: 90%;  padding: 8pt;  overflow: auto;  white-space: pre;  word-wrap: normal;}pre.src {  position: relative;}pre.src:before {  display: none;  position: absolute;  background-color: #FFF;  top: 0.5em;  right: 0.5em;  padding: 4px;  border: 1px solid #CCC;}pre.src-sh:before {  content: "Shell Script";}pre.src-bash:before {  content: "Bash Script";}pre.src-emacs-lisp:before {  content: "Emacs Lisp";}pre.src-R:before {  content: "R";}pre.src-perl:before {  content: "Perl";}pre.src-java:before {  content: "Java";}pre.src-sql:before {  content: "SQL";}pre.src-c:before {  content: "C";}pre.src-cpp:before {  content: "C++";}pre.src-html:before {  content: "HTML";}table {  border-collapse: collapse;  display: block;  overflow-x: auto;}caption.t-above {  caption-side: top;}caption.t-bottom {  caption-side: bottom;}td, th {  vertical-align: top;  border: 1px solid #CCC;  padding: 0.5em;}th.right {  text-align: center;}th.left {  text-align: center;}th.center {  text-align: center;}td.right {  text-align: right;}td.left {  text-align: left;}td.center {  text-align: center;}dt {  font-weight: bold;}#footnotes {  border-top: 5px solid #0A4C89;  margin-bottom: 5em;}#footnotes h2 {  display: none;}#text-footnotes {  margin-top: 1em;}.footpara:nth-child(2) {  display: inline;}.footpara {  display: block;}.footdef sup:before {  content: "[";}.footdef sup:after {  content: "]";}.footdef p {  display: inline;}figure {  margin: 0;}figure img {  max-width: 100%;}figcaption {  text-align: center;  font-size: 0.8rem;}.inlinetask {  padding: 10px;  border: 2px solid gray;  margin: 10px;  background: #ffffcc;}#org-div-home-and-up {  text-align: right;  font-size: 70%;  white-space: nowrap;}textarea {  overflow-x: auto;}.linenr {  font-size: smaller;}.code-highlighted {  background-color: #ffff00;}.org-info-js_info-navigation {  border-style: none;}#org-info-js_console-label {  font-size: 10px;  font-weight: bold;  white-space: nowrap;}.org-info-js_search-highlight {  background-color: #ffff00;  color: #000000;  font-weight: bold;}p.verse,blockquote {  margin: 0;  padding: 0;  padding-left: 3%;  border-left: 5px solid #0A4C89;}body {  font-family: Lora, Palatino, Georgia, serif;  width: 92%;  max-width: 1024px;  margin: 0 auto;  background-color: #FFF;}h2 {  line-height: 1.62em;}.title {  margin: 0 0 2em 0;  line-height: 2em;  border-bottom: 5px solid #0A4C89;  text-align: center;}#postamble {  font-size: 80%;  line-height: 1.4em;  text-align: right;}h1, h2, h3, h4, h5, h6 {  font-family: "Source Sans Pro", sans-serif;  color: #222;}.outline-2 {  margin-bottom: 4em;}.outline-2 h2 {  border-bottom: 1px solid #CCC;}.outline-text-2 code, pre {  background-color: #EEE;}#table-of-contents {  display: none;  margin-left: 0.5em;}#text-table-of-contents ul {  padding-left: 1.8em;}#text-table-of-contents li {  list-style-type: circle;  margin: 0.4em 0;}#text-table-of-contents ul ul {  margin: 0;}#text-table-of-contents li li {  font-weight: normal;  font-size: 90%;  margin: 0;}#content {  overflow: hidden;  *zoom: 1;}/* ==========================================================================   EXAMPLE Media Queries for Responsive Design.   These examples override the primary ('mobile first') styles.   Modify as content requires.   ========================================================================== */@media only screen and (min-width: 35em) {  /* Style adjustments for viewports that meet the condition */}@media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {  /* Style adjustments for high resolution devices */}/* ==========================================================================   Print styles.   Inlined to avoid required HTTP connection: h5bp.com/r   ========================================================================== */@media print {  * {    background: transparent !important;    color: #000 !important;    /* Black prints faster: h5bp.com/s */    box-shadow: none !important;    text-shadow: none !important;  }  a,  a:visited {    text-decoration: underline;  }  a[href]:after {    content: " (" attr(href) ")";  }  abbr[title]:after {    content: " (" attr(title) ")";  }  /*   * Don't show links for images, or javascript/internal links   */  .ir a:after,  a[href^="javascript:"]:after,  a[href^="#"]:after {    content: "";  }  pre,  blockquote {    /* border: 1px solid #999; */    page-break-inside: avoid;  }  thead {    display: table-header-group;    /* h5bp.com/t */  }  tr,  img {    page-break-inside: avoid;  }  img {    max-width: 100% !important;  }  @page {    margin: 0.5cm;  }  p,  h2,  h3 {    orphans: 3;    widows: 3;  }  h2,  h3 {    page-break-after: avoid;  }  #table-of-contents {    display: block;    width: initial;    border: none;  }  #table-of-contents a {    text-decoration: none;  }}/* large screen */@media screen and (min-width: 40rem) {  html {    font-size: 100%;  }  #table-of-contents {    display: block;    padding: 1em;    width: 32%;    min-width: 18em;    float: right;    background-color: #EEE;    position: relative;    /* required by z-index */    z-index: 5000;    border: 1px solid #CCC;  }  .tag {    display: initial;  }}
+</style>
+
+        <style>
+        /* From: https://endlessparentheses.com/public/css/endless.css */
+        /* See also: https://meta.superuser.com/questions/4788/css-for-the-new-kbd-style */
+        kbd
+        {
+          -moz-border-radius: 6px;
+          -moz-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+          -webkit-border-radius: 6px;
+          -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+          background-color: #f7f7f7;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+          color: #333;
+          display: inline-block;
+          font-family: 'Droid Sans Mono', monospace;
+          font-size: 80%;
+          font-weight: normal;
+          line-height: inherit;
+          margin: 0 .1em;
+          padding: .08em .4em;
+          text-shadow: 0 1px 0 #fff;
+          word-spacing: -4px;
+        
+          box-shadow: 2px 2px 2px #222; /* MA: An extra I've added. */
+        }
+        </style>
+        <link rel="stylesheet" type="text/css" href="https://alhassy.github.io/org-special-block-extras/tooltipster/dist/css/tooltipster.bundle.min.css"/>
+        
+        <link rel="stylesheet" type="text/css" href="https://alhassy.github.io/org-special-block-extras/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-punk.min.css" />
+        
+        <script type="text/javascript">
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape('%3Cscript src="https://code.jquery.com/jquery-1.10.0.min.js"%3E%3C/script%3E'));
+            }
+        </script>
+        
+         <script type="text/javascript"            src="https://alhassy.github.io/org-special-block-extras/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+        
+          <script>
+                 $(document).ready(function() {
+                     $('.tooltip').tooltipster({
+                         theme: 'tooltipster-punk',
+                         contentAsHTML: true,
+                         animation: 'grow',
+                         delay: [100,500],
+                         // trigger: 'click'
+                         trigger: 'custom',
+                         triggerOpen: {
+                             mouseenter: true
+                         },
+                         triggerClose: {
+                             originClick: true,
+                             scroll: true
+                         }
+         });
+                 });
+             </script>
+        
+        <style>
+           abbr {color: red;}
+        
+           .tooltip { border-bottom: 1px dotted #000;
+                      color:red;
+                      text-decoration: none;}
+        </style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<header>
+<h1 class="title">Hyperbolic metric spaces and stochastic embeddings</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org47e4bff">1. Reference</a></li>
+<li><a href="#org46d133d">2. Preliminaries</a>
+<ul>
+<li><a href="#orgc5427c0">2.1. Metric Spaces and Maps between them.</a></li>
+<li><a href="#orgf58f16f">2.2. Banach and Bochner-Lebesgue Spaces</a>
+<ul>
+<li><a href="#org8572816">2.2.1. Theorem 2.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+<li><a href="#org34f799e">2.2.2. Lemma 2.8</a></li>
+</ul>
+</li>
+<li><a href="#org4917b4a">2.3. Lipschitz Free Spaces</a></li>
+<li><a href="#org3846643">2.4. Nagata Dimension and Lipschitz Extension</a></li>
+<li><a href="#orgfdf59bf">2.5. Hyperbolic Metric Spaces</a></li>
+<li><a href="#orge4d90ae">2.6. Ultrametric Spaces and R-Trees</a></li>
+</ul>
+</li>
+<li><a href="#org5953f2d">3. Stochastic Embedding and Lipschitz Free Spaces</a>
+<ul>
+<li><a href="#org8c95824">3.1. Random Maps and Stochastic Embeddings</a></li>
+<li><a href="#org2e70d51">3.2. Spaces of Random Lipschitz Functions</a></li>
+<li><a href="#org42d279d">3.3. Stochastic Embeddings into \({\mathcal{R}}\) -trees and isomorphisms to \(L^1\) -Spaces</a>
+<ul>
+<li><a href="#org89f4db4">3.3.1. Theorem 3.3 (Theorem A)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb984b98">4. Stochastic Embedding into Ultrametric Spaces</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org9433e53">4.0.1. Theorem B&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org3f53588">4.1. \(l^{0+}\) -small subsets of \(l^{\infty}\)</a></li>
+<li><a href="#org07dd2d2">4.2. Threshold and Snowflake Embeddings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+<li><a href="#orgafdae69">4.3. Free Spaces over Distorted Finite Nagata-Dim. Spaces.</a></li>
+</ul>
+</li>
+<li><a href="#org1b5b3fc">5. log-Stochastic Embedings and Hyperbolic Fillings</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgc17ad5e">5.0.1. Theorem 5.7 (Theorem C)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+<li><a href="#org77fb51d">5.0.2. Corollary 5.8</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9ffbdaf">6. The Lipschitz Free Space over \(\mathcal{H}^n\)</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org348f8cb">6.0.1. Theorem D&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+
+
+<div id="outline-container-org47e4bff" class="outline-2">
+<h2 id="org47e4bff"><span class="section-number-2">1.</span> Reference</h2>
+<div class="outline-text-2" id="text-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+
+<p>
+<a href="20240109101519-elements_of_asymptotic_geometry.html#ID-5e856a62-c5bb-4003-a588-661364ee62e8">Elements of asymptotic geometry</a>
+</p>
+
+<p>
+<a href="bartal1996ProbabilisticApproximationofMetricSpacesandItsAlgorithmicApplications.html#ID-6a5cde3d-347a-47dd-bce0-b7290eb420fc">Probabilistic approximation of metric spaces and its algorithmic applications</a>
+</p>
+
+<p>
+<a href="Bonk2000EmbeddingsofGromovHyperbolicSpaces.html#ID-534aaae1-f086-4042-8f05-21f57d7cf483">Embeddings of gromov hyperbolic spaces</a>
+</p>
+
+<p>
+<a href="DingJianLeeJamesRPeresYuval2013MarkovTypeandThresholdEmbeddings.html#ID-ab528b20-83bc-4cdf-ad8f-1a920477ea40">Markov type and threshold embeddings</a>
+</p>
+
+<p>
+<a href="FakcharoenpholRao2004ATightBoundonApproximatingArbitraryMetricsbyTreeMetrics.html#ID-2f7bd99c-ea62-4cab-84cf-57d6aaf69fc4">A tight bound on approximating arbitrary metrics by tree metrics</a>
+</p>
+
+<p>
+<a href="20231218233631-a_hyperbolic_filling_for_ultrametric_spaces.html#ID-fa32a04c-7c26-4d21-b90b-4655b942589d">A hyperbolic filling for ultrametric spaces</a>
+</p>
+
+<p>
+<a href="Krauthgamer2006AlgorithmsonNegativelyCurvedSpaces.html#ID-7f6159e6-6fde-4a9b-ac67-be10e73cfdfa">Algorithms on negatively curved spaces</a>
+</p>
+
+<p>
+<a href="LangUrsSchlichenmaierThilo2005NagataDimensionQuasisymmetricEmbeddingsandLipschitzExtensions.html#ID-cb9a57b5-952f-4932-8dd0-6580b60a17e0">Nagata dimension, quasisymmetric embeddings, and lipschitz extensions</a>
+</p>
+
+
+
+</details>
+</div>
+</div>
+
+
+
+<div id="outline-container-org46d133d" class="outline-2">
+<h2 id="org46d133d"><span class="section-number-2">2.</span> Preliminaries</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgc5427c0" class="outline-3">
+<h3 id="orgc5427c0"><span class="section-number-3">2.1.</span> Metric Spaces and Maps between them.</h3>
+</div>
+
+<div id="outline-container-orgf58f16f" class="outline-3">
+<h3 id="orgf58f16f"><span class="section-number-3">2.2.</span> Banach and Bochner-Lebesgue Spaces</h3>
+<div class="outline-text-3" id="text-2-2">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         definition
+                      </font>
+                    </strong>
+                  </summary>
+<ul class="org-ul">
+<li>C-bounded</li>
+<li>C-isomorphic embedding</li>
+<li>C-isomorphism</li>
+<li>\[V\approx W\] : there exists an isomorphism between \(V\) and \(W\)</li>
+<li>C-complemented :</li>
+<li>Pelczynski decomposition method</li>
+<li>\(L^1\) -space : if a Banach space equals the Lebesgue space \(L^1 (\Omega,\mathcal{F}, \mu)\) for some measure space \((\Omega,\mathcal{F}, \mu)\)</li>
+<li>function \(g\) is <i>Bochner measurable</i>: if \(g\) is \(\mu\) -almost everywhere pointwise limit of a sequence of simple functions.</li>
+<li>a function is <i>simple</i>  : if it belongs to the linear span of the indicator functions.</li>
+<li>function \(g\)   is <i>essentially-separably-valued</i> :</li>
+</ul>
+
+
+</details>
+</div>
+
+<div id="outline-container-org8572816" class="outline-4">
+<h4 id="org8572816"><span class="section-number-4">2.2.1.</span> Theorem 2.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div class="outline-text-4" id="text-2-2-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+Let \(X\) be an infinite separable metric space. If \(LF(X)\) is isomorphic to a complemented subspace of \(L^1\) -space, then \(LF(X)\approx L^1\), with the latter isomorphism holdig iff. the completion of \(X\) is purely 1-unrectifiable.
+</p>
+
+
+</details>
+</div>
+</div>
+
+<div id="outline-container-org34f799e" class="outline-4">
+<h4 id="org34f799e"><span class="section-number-4">2.2.2.</span> Lemma 2.8</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<ul class="org-ul">
+<li>Let \(U\) be a bounded ultrametric space. Then there exist an \(\mathcal{R}\) -tree \(T\) and a rough biLipschitz embedding \(Con(U)\to T\) that is measurable, maps separable subsets to separable subsets, and has coarsely dense image.</li>
+
+<li>\(Con(U)\) is roughtly biLipschitz equivalent to \(T\).</li>
+</ul>
+
+
+</details>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4917b4a" class="outline-3">
+<h3 id="org4917b4a"><span class="section-number-3">2.3.</span> Lipschitz Free Spaces</h3>
+<div class="outline-text-3" id="text-2-3">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         definitions
+                      </font>
+                    </strong>
+                  </summary>
+<ul class="org-ul">
+<li><i>basepoint preserving</i>:</li>
+<li>\(Lip_0 (X)\) : the vector space of basepoint preserving Lipschitz funcitons \(f:X\to \mathcal{R}\)</li>
+<li>再加上norm定义：\(Lip(f)\)，就形成Banach space</li>
+<li><i>Lipschitz free space</i> :</li>
+</ul>
+
+
+</details>
+</div>
+</div>
+
+
+<div id="outline-container-org3846643" class="outline-3">
+<h3 id="org3846643"><span class="section-number-3">2.4.</span> Nagata Dimension and Lipschitz Extension</h3>
+<div class="outline-text-3" id="text-2-4">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-right">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">an open subset of \(\mathcal{R}^n\)</td>
+<td class="org-right">n</td>
+</tr>
+
+<tr>
+<td class="org-left">doubling space</td>
+<td class="org-right">finite Nagata dimension</td>
+</tr>
+
+<tr>
+<td class="org-left">ultrametric space</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-left">nontrivial \(\mathcal{R}\) -trees</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</details>
+</div>
+</div>
+
+
+<div id="outline-container-orgfdf59bf" class="outline-3">
+<h3 id="orgfdf59bf"><span class="section-number-3">2.5.</span> Hyperbolic Metric Spaces</h3>
+</div>
+
+
+<div id="outline-container-orge4d90ae" class="outline-3">
+<h3 id="orge4d90ae"><span class="section-number-3">2.6.</span> Ultrametric Spaces and R-Trees</h3>
+<div class="outline-text-3" id="text-2-6">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Ultrametric Spaces
+                      </font>
+                    </strong>
+                  </summary>
+<ul class="org-ul">
+<li>A metric space is biLipschitz equivalent to an ultrametric space iff. it is snowflake equivalent to an ultrametric space iff. it has Nagata dimension 0.</li>
+<li>Every ultrametric space is 0-hyperbolic and thus isometrically embeds into an \(\mathcal{R}\) -tree</li>
+</ul>
+
+
+</details>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org5953f2d" class="outline-2">
+<h2 id="org5953f2d"><span class="section-number-2">3.</span> Stochastic Embedding and Lipschitz Free Spaces</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org8c95824" class="outline-3">
+<h3 id="org8c95824"><span class="section-number-3">3.1.</span> Random Maps and Stochastic Embeddings</h3>
+<div class="outline-text-3" id="text-3-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         random maps
+                      </font>
+                    </strong>
+                  </summary>
+<ul class="org-ul">
+<li>\(\phi\) is pointwise essentially separably valued</li>
+<li>\(\phi\) is almost surely basepoint preserving</li>
+</ul>
+
+
+</details>
+</div>
+</div>
+
+
+<div id="outline-container-org2e70d51" class="outline-3">
+<h3 id="org2e70d51"><span class="section-number-3">3.2.</span> Spaces of Random Lipschitz Functions</h3>
+</div>
+
+<div id="outline-container-org42d279d" class="outline-3">
+<h3 id="org42d279d"><span class="section-number-3">3.3.</span> Stochastic Embeddings into \({\mathcal{R}}\) -trees and isomorphisms to \(L^1\) -Spaces</h3>
+<div class="outline-text-3" id="text-3-3">
+</div>
+<div id="outline-container-org89f4db4" class="outline-4">
+<h4 id="org89f4db4"><span class="section-number-4">3.3.1.</span> Theorem 3.3 (Theorem A)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div class="outline-text-4" id="text-3-3-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Theorem
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+Let \(X\) be an infinite, proper, pointed metric space. If \(X\) stochastic biLipshitzly embeds into a pointed \(\mathcal{R}\) -tree,
+then \(LF(X)\approx L^1\), with the latter isomorphism hodling iff. the completion of \(X\) is purely 1-unrectifiable.
+</p>
+
+
+</details>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb984b98" class="outline-2">
+<h2 id="orgb984b98"><span class="section-number-2">4.</span> Stochastic Embedding into Ultrametric Spaces</h2>
+<div class="outline-text-2" id="text-4">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Intuitive Introduction
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+主要目标是producing stochastic biLipschitz embedding of certain classes of Gromov hyperbolic space into \(\mathcal{R}\) -trees.
+</p>
+
+<p>
+由于 \(\mathcal{R}\) -trees 的boundary是 ultrametric space
+</p>
+
+<p>
+所以作者主要寻找满足什么条件，使得 hyperbolic metric space的boundary可以stochastic biLipschitzly嵌入到ultrametric space.
+</p>
+
+<p>
+第4章主要就是寻找这个条件，作者认为合适的条件为：具有finite Nagata dimension
+</p>
+
+
+
+</details>
+</div>
+
+<div id="outline-container-org9433e53" class="outline-4">
+<h4 id="org9433e53"><span class="section-number-4">4.0.1.</span> Theorem B&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div class="outline-text-4" id="text-4-0-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Theorem
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+Let \((X, d)\) be an infinite, compact, finite Nagata-dimensional metric space. Then for every \(\alpha\in (0,1)\),<br>
+the metric space \((X, d^{\alpha})\) admits a stochastic biLipschitz embedding into a pointed ultrametric space,<br>
+and \(LF(X, d^{\alpha})\approx l^1\) .
+</p>
+
+
+</details>
+</div>
+</div>
+
+<div id="outline-container-org3f53588" class="outline-3">
+<h3 id="org3f53588"><span class="section-number-3">4.1.</span> \(l^{0+}\) -small subsets of \(l^{\infty}\)</h3>
+</div>
+
+
+<div id="outline-container-org07dd2d2" class="outline-3">
+<h3 id="org07dd2d2"><span class="section-number-3">4.2.</span> Threshold and Snowflake Embeddings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h3>
+<div class="outline-text-3" id="text-4-2">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Theorem
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+For every bounded, separable, pointed metric space \((X, d, p)\) with finite Nagata dimension and every \(\alpha\in (0,1)\) , the pointed space $(X, d<sup>nil</sup><sup>nil</sup><sup>nil</sup><sup>&alpha;</sup>,p) $ admits a stochastic biLipschitz embedding of distortion \(D<\infty\) into a bounded, separable, pointed ultrametric space, where \(D\) depends only on \(n, \gamma,\alpha\).
+</p>
+
+
+</details>
+</div>
+</div>
+
+
+<div id="outline-container-orgafdae69" class="outline-3">
+<h3 id="orgafdae69"><span class="section-number-3">4.3.</span> Free Spaces over Distorted Finite Nagata-Dim. Spaces.</h3>
+</div>
+</div>
+
+<div id="outline-container-org1b5b3fc" class="outline-2">
+<h2 id="org1b5b3fc"><span class="section-number-2">5.</span> log-Stochastic Embedings and Hyperbolic Fillings</h2>
+<div class="outline-text-2" id="text-5">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Intuitive Introduction
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+第5章重新开始构造从双曲空间到 R-tree的stochastic biLipschitz embedding <br>
+</p>
+
+<p>
+目标是理解上述问题如何通过将 \(\partial X\) stochastic biLipschitz嵌入到ultrametric space来实现 <br>
+</p>
+
+<p>
+这个问题其实就是经典的 hyperbolic filling领域考虑的问题 <br>
+</p>
+
+<p>
+本文主要使用的技巧来自于 <a href="Bonk2000EmbeddingsofGromovHyperbolicSpaces.html#ID-534aaae1-f086-4042-8f05-21f57d7cf483">Embeddings of gromov hyperbolic spaces</a> <br>
+</p>
+
+<p>
+作者引入了 log-stochastic biLipschitz embedding
+</p>
+
+
+</details>
+
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Definitions
+                      </font>
+                    </strong>
+                  </summary>
+<ul class="org-ul">
+<li>uniformly discrete: if there exists \(\theta>0\) such that \(d(x,y)>\theta\) for all \(x\neq y\in X\)</li>
+<li>locally finite: if all its bounded sets are finite.</li>
+</ul>
+
+
+</details>
+</div>
+
+<div id="outline-container-orgc17ad5e" class="outline-4">
+<h4 id="orgc17ad5e"><span class="section-number-4">5.0.1.</span> Theorem 5.7 (Theorem C)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div class="outline-text-4" id="text-5-0-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Theorem
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+Let \(A\) be an infinite, uniformly discrete, locally finite, pointed metric space, and let \(X\) be a visual, hyperbolic, pointed metric space.
+If \(A\) rough biLipschitzly embeds into \(X\) and \(\partial X\) log-stochastic biLipschitzly embeds into a bounded, pointed ultrametric space, then \(A\) stochastic biLipschitzly embeds into a pointed \(\mathcal{R}\) -tree and \(LF(A)\approx l^1\).
+</p>
+
+
+</details>
+
+
+
+<figure id="orgba3e2ec">
+<img src="media/img/2025-01-02-Hyperbolic-Metric-Spaces-and-Stochastic-Embeddings.jpg" alt="2025-01-02-Hyperbolic-Metric-Spaces-and-Stochastic-Embeddings.jpg" width="1000">
+
+<figcaption><span class="figure-number">Figure 1: </span>theorem C</figcaption>
+</figure>
+</div>
+</div>
+
+
+<div id="outline-container-org77fb51d" class="outline-4">
+<h4 id="org77fb51d"><span class="section-number-4">5.0.2.</span> Corollary 5.8</h4>
+<div class="outline-text-4" id="text-5-0-2">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Corollary
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+Let \(A\) be an infinite, uniformly discrete, locally finite, pointed metric space, and let \(X\) be a visual, hperbolic, pointed metric space. If \(A\) rough biLipschitzly embeds into \(X\) and \(\partial X\) is separable and finite Nagata-dimensional, then \(A\) stochastic biLipschitzly embeds into a pointed \(\mathcal{R}\) -tree and \(LF(A)\approx l^1\) .
+</p>
+
+
+</details>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org9ffbdaf" class="outline-2">
+<h2 id="org9ffbdaf"><span class="section-number-2">6.</span> The Lipschitz Free Space over \(\mathcal{H}^n\)</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org348f8cb" class="outline-4">
+<h4 id="org348f8cb"><span class="section-number-4">6.0.1.</span> Theorem D&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div class="outline-text-4" id="text-6-0-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Theorem
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+the free space over hyperbolic \(n\) -space \(\mathcal{H}^n\) is isomorphic to the free space over Euclidean \(n\) -space \(\mathcal{R}^n\) <br>
+</p>
+
+<p>
+\[LF(\mathcal{H}^n)\approx LF(\mathcal{R}^n)\]
+</p>
+
+
+</details>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2024/12/30</p>
+<p class="author">Author: sunpy</p>
+<p class="date">Created: 2025-01-02 周四 23:02</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
