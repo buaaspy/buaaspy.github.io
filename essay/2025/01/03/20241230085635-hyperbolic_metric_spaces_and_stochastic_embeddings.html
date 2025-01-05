@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2025-01-02 周四 23:02 -->
+<!-- 2025-01-05 周日 20:42 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hyperbolic metric spaces and stochastic embeddings</title>
@@ -109,60 +109,62 @@ html,button,input,select,textarea {  color: #484C66;}html {  font-size: 90%;  li
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org47e4bff">1. Reference</a></li>
-<li><a href="#org46d133d">2. Preliminaries</a>
+<li><a href="#org16862bd">1. Reference</a></li>
+<li><a href="#orgb2346cb">2. Preliminaries</a>
 <ul>
-<li><a href="#orgc5427c0">2.1. Metric Spaces and Maps between them.</a></li>
-<li><a href="#orgf58f16f">2.2. Banach and Bochner-Lebesgue Spaces</a>
+<li><a href="#org8f3c826">2.1. Metric Spaces and Maps between them.</a></li>
+<li><a href="#org47275df">2.2. Banach and Bochner-Lebesgue Spaces</a>
 <ul>
-<li><a href="#org8572816">2.2.1. Theorem 2.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
-<li><a href="#org34f799e">2.2.2. Lemma 2.8</a></li>
+<li><a href="#org9cb40d4">2.2.1. Theorem 2.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+<li><a href="#org267be79">2.2.2. Lemma 2.8</a></li>
 </ul>
 </li>
-<li><a href="#org4917b4a">2.3. Lipschitz Free Spaces</a></li>
-<li><a href="#org3846643">2.4. Nagata Dimension and Lipschitz Extension</a></li>
-<li><a href="#orgfdf59bf">2.5. Hyperbolic Metric Spaces</a></li>
-<li><a href="#orge4d90ae">2.6. Ultrametric Spaces and R-Trees</a></li>
+<li><a href="#org20284b3">2.3. Lipschitz Free Spaces</a></li>
+<li><a href="#orga1e377d">2.4. Nagata Dimension and Lipschitz Extension</a></li>
+<li><a href="#org3446a81">2.5. Hyperbolic Metric Spaces</a></li>
+<li><a href="#org81302ca">2.6. Ultrametric Spaces and R-Trees</a></li>
 </ul>
 </li>
-<li><a href="#org5953f2d">3. Stochastic Embedding and Lipschitz Free Spaces</a>
+<li><a href="#org7314823">3. Stochastic Embedding and Lipschitz Free Spaces</a>
 <ul>
-<li><a href="#org8c95824">3.1. Random Maps and Stochastic Embeddings</a></li>
-<li><a href="#org2e70d51">3.2. Spaces of Random Lipschitz Functions</a></li>
-<li><a href="#org42d279d">3.3. Stochastic Embeddings into \({\mathcal{R}}\) -trees and isomorphisms to \(L^1\) -Spaces</a>
+<li><a href="#org72fd87f">3.1. Random Maps and Stochastic Embeddings</a></li>
+<li><a href="#org0eb0130">3.2. Spaces of Random Lipschitz Functions</a></li>
+<li><a href="#org9f25e28">3.3. Stochastic Embeddings into \({\mathcal{R}}\) -trees and isomorphisms to \(L^1\) -Spaces</a>
 <ul>
-<li><a href="#org89f4db4">3.3.1. Theorem 3.3 (Theorem A)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+<li><a href="#orgd152f22">3.3.1. Theorem 3.3 (Theorem A)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgb984b98">4. Stochastic Embedding into Ultrametric Spaces</a>
+<li><a href="#orgb29c278">4. Stochastic Embedding into Ultrametric Spaces</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org9433e53">4.0.1. Theorem B&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+<li><a href="#orgb78879f">4.0.1. Lemma 4.1</a></li>
+<li><a href="#org1ef90f2">4.0.2. Theorem 4.3&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+<li><a href="#org7ac60fa">4.0.3. Theorem B&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org3f53588">4.1. \(l^{0+}\) -small subsets of \(l^{\infty}\)</a></li>
-<li><a href="#org07dd2d2">4.2. Threshold and Snowflake Embeddings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
-<li><a href="#orgafdae69">4.3. Free Spaces over Distorted Finite Nagata-Dim. Spaces.</a></li>
+<li><a href="#org3705f39">4.1. \(l^{0+}\) -small subsets of \(l^{\infty}\)</a></li>
+<li><a href="#orgf340fa3">4.2. Threshold and Snowflake Embeddings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+<li><a href="#org1597a5a">4.3. Free Spaces over Distorted Finite Nagata-Dim. Spaces.</a></li>
 </ul>
 </li>
-<li><a href="#org1b5b3fc">5. log-Stochastic Embedings and Hyperbolic Fillings</a>
+<li><a href="#org85a970e">5. log-Stochastic Embedings and Hyperbolic Fillings</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orgc17ad5e">5.0.1. Theorem 5.7 (Theorem C)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
-<li><a href="#org77fb51d">5.0.2. Corollary 5.8</a></li>
+<li><a href="#org99a9ac5">5.0.1. Theorem 5.7 (Theorem C)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+<li><a href="#org27150a0">5.0.2. Corollary 5.8</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org9ffbdaf">6. The Lipschitz Free Space over \(\mathcal{H}^n\)</a>
+<li><a href="#orgcd56308">6. The Lipschitz Free Space over \(\mathcal{H}^n\)</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org348f8cb">6.0.1. Theorem D&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
+<li><a href="#org3c2e3cc">6.0.1. Theorem D&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></a></li>
 </ul>
 </li>
 </ul>
@@ -172,8 +174,8 @@ html,button,input,select,textarea {  color: #484C66;}html {  font-size: 90%;  li
 </nav>
 
 
-<div id="outline-container-org47e4bff" class="outline-2">
-<h2 id="org47e4bff"><span class="section-number-2">1.</span> Reference</h2>
+<div id="outline-container-org16862bd" class="outline-2">
+<h2 id="org16862bd"><span class="section-number-2">1.</span> Reference</h2>
 <div class="outline-text-2" id="text-1">
 <details class="code-details"
                  style ="padding: 1em;
@@ -226,21 +228,68 @@ html,button,input,select,textarea {  color: #484C66;}html {  font-size: 90%;  li
 
 
 </details>
+
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+该分析框架的一个参考应用：<a href="20241223172949-improving_robustness_of_hyperbolic_neural_networks_by_lipschitz_analysis.html#ID-3a8595fa-a8fe-4df1-adf9-6c49d95f47b4">Improving robustness of hyperbolic neural networks by lipschitz analysis</a>
+</p>
+
+
+</details>
 </div>
 </div>
 
 
 
-<div id="outline-container-org46d133d" class="outline-2">
-<h2 id="org46d133d"><span class="section-number-2">2.</span> Preliminaries</h2>
+<div id="outline-container-orgb2346cb" class="outline-2">
+<h2 id="orgb2346cb"><span class="section-number-2">2.</span> Preliminaries</h2>
 <div class="outline-text-2" id="text-2">
-</div>
-<div id="outline-container-orgc5427c0" class="outline-3">
-<h3 id="orgc5427c0"><span class="section-number-3">2.1.</span> Metric Spaces and Maps between them.</h3>
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         大目标
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+【Q】决定when LF(X) isomorphically 嵌入到 \(L^1\) -space <br>
+【A】for any infinite, compact, doubling space \((X,d)\) and exponent \(\alpha\in(0,1)\), the snowflake space \((X, d^{\alpha})\) has free space isomorphic to \(l^1\) <br>
+【Q】或者more strongly，when LF(X) is isomorphic to an \(L^1\) -space <br>
+【A】iff. X isometrically embeds into an \(\mathcal{R}\) -tree
+</p>
+
+
+</details>
 </div>
 
-<div id="outline-container-orgf58f16f" class="outline-3">
-<h3 id="orgf58f16f"><span class="section-number-3">2.2.</span> Banach and Bochner-Lebesgue Spaces</h3>
+<div id="outline-container-org8f3c826" class="outline-3">
+<h3 id="org8f3c826"><span class="section-number-3">2.1.</span> Metric Spaces and Maps between them.</h3>
+</div>
+
+<div id="outline-container-org47275df" class="outline-3">
+<h3 id="org47275df"><span class="section-number-3">2.2.</span> Banach and Bochner-Lebesgue Spaces</h3>
 <div class="outline-text-3" id="text-2-2">
 <details class="code-details"
                  style ="padding: 1em;
@@ -274,8 +323,8 @@ html,button,input,select,textarea {  color: #484C66;}html {  font-size: 90%;  li
 </details>
 </div>
 
-<div id="outline-container-org8572816" class="outline-4">
-<h4 id="org8572816"><span class="section-number-4">2.2.1.</span> Theorem 2.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div id="outline-container-org9cb40d4" class="outline-4">
+<h4 id="org9cb40d4"><span class="section-number-4">2.2.1.</span> Theorem 2.2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
 <div class="outline-text-4" id="text-2-2-1">
 <details class="code-details"
                  style ="padding: 1em;
@@ -301,8 +350,8 @@ Let \(X\) be an infinite separable metric space. If \(LF(X)\) is isomorphic to a
 </div>
 </div>
 
-<div id="outline-container-org34f799e" class="outline-4">
-<h4 id="org34f799e"><span class="section-number-4">2.2.2.</span> Lemma 2.8</h4>
+<div id="outline-container-org267be79" class="outline-4">
+<h4 id="org267be79"><span class="section-number-4">2.2.2.</span> Lemma 2.8</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <details class="code-details"
                  style ="padding: 1em;
@@ -331,8 +380,8 @@ Let \(X\) be an infinite separable metric space. If \(LF(X)\) is isomorphic to a
 </div>
 </div>
 
-<div id="outline-container-org4917b4a" class="outline-3">
-<h3 id="org4917b4a"><span class="section-number-3">2.3.</span> Lipschitz Free Spaces</h3>
+<div id="outline-container-org20284b3" class="outline-3">
+<h3 id="org20284b3"><span class="section-number-3">2.3.</span> Lipschitz Free Spaces</h3>
 <div class="outline-text-3" id="text-2-3">
 <details class="code-details"
                  style ="padding: 1em;
@@ -362,8 +411,8 @@ Let \(X\) be an infinite separable metric space. If \(LF(X)\) is isomorphic to a
 </div>
 
 
-<div id="outline-container-org3846643" class="outline-3">
-<h3 id="org3846643"><span class="section-number-3">2.4.</span> Nagata Dimension and Lipschitz Extension</h3>
+<div id="outline-container-orga1e377d" class="outline-3">
+<h3 id="orga1e377d"><span class="section-number-3">2.4.</span> Nagata Dimension and Lipschitz Extension</h3>
 <div class="outline-text-3" id="text-2-4">
 <details class="code-details"
                  style ="padding: 1em;
@@ -418,13 +467,13 @@ Let \(X\) be an infinite separable metric space. If \(LF(X)\) is isomorphic to a
 </div>
 
 
-<div id="outline-container-orgfdf59bf" class="outline-3">
-<h3 id="orgfdf59bf"><span class="section-number-3">2.5.</span> Hyperbolic Metric Spaces</h3>
+<div id="outline-container-org3446a81" class="outline-3">
+<h3 id="org3446a81"><span class="section-number-3">2.5.</span> Hyperbolic Metric Spaces</h3>
 </div>
 
 
-<div id="outline-container-orge4d90ae" class="outline-3">
-<h3 id="orge4d90ae"><span class="section-number-3">2.6.</span> Ultrametric Spaces and R-Trees</h3>
+<div id="outline-container-org81302ca" class="outline-3">
+<h3 id="org81302ca"><span class="section-number-3">2.6.</span> Ultrametric Spaces and R-Trees</h3>
 <div class="outline-text-3" id="text-2-6">
 <details class="code-details"
                  style ="padding: 1em;
@@ -453,12 +502,12 @@ Let \(X\) be an infinite separable metric space. If \(LF(X)\) is isomorphic to a
 </div>
 
 
-<div id="outline-container-org5953f2d" class="outline-2">
-<h2 id="org5953f2d"><span class="section-number-2">3.</span> Stochastic Embedding and Lipschitz Free Spaces</h2>
+<div id="outline-container-org7314823" class="outline-2">
+<h2 id="org7314823"><span class="section-number-2">3.</span> Stochastic Embedding and Lipschitz Free Spaces</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org8c95824" class="outline-3">
-<h3 id="org8c95824"><span class="section-number-3">3.1.</span> Random Maps and Stochastic Embeddings</h3>
+<div id="outline-container-org72fd87f" class="outline-3">
+<h3 id="org72fd87f"><span class="section-number-3">3.1.</span> Random Maps and Stochastic Embeddings</h3>
 <div class="outline-text-3" id="text-3-1">
 <details class="code-details"
                  style ="padding: 1em;
@@ -486,16 +535,16 @@ Let \(X\) be an infinite separable metric space. If \(LF(X)\) is isomorphic to a
 </div>
 
 
-<div id="outline-container-org2e70d51" class="outline-3">
-<h3 id="org2e70d51"><span class="section-number-3">3.2.</span> Spaces of Random Lipschitz Functions</h3>
+<div id="outline-container-org0eb0130" class="outline-3">
+<h3 id="org0eb0130"><span class="section-number-3">3.2.</span> Spaces of Random Lipschitz Functions</h3>
 </div>
 
-<div id="outline-container-org42d279d" class="outline-3">
-<h3 id="org42d279d"><span class="section-number-3">3.3.</span> Stochastic Embeddings into \({\mathcal{R}}\) -trees and isomorphisms to \(L^1\) -Spaces</h3>
+<div id="outline-container-org9f25e28" class="outline-3">
+<h3 id="org9f25e28"><span class="section-number-3">3.3.</span> Stochastic Embeddings into \({\mathcal{R}}\) -trees and isomorphisms to \(L^1\) -Spaces</h3>
 <div class="outline-text-3" id="text-3-3">
 </div>
-<div id="outline-container-org89f4db4" class="outline-4">
-<h4 id="org89f4db4"><span class="section-number-4">3.3.1.</span> Theorem 3.3 (Theorem A)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div id="outline-container-orgd152f22" class="outline-4">
+<h4 id="orgd152f22"><span class="section-number-4">3.3.1.</span> Theorem 3.3 (Theorem A)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
 <div class="outline-text-4" id="text-3-3-1">
 <details class="code-details"
                  style ="padding: 1em;
@@ -524,8 +573,8 @@ then \(LF(X)\approx L^1\), with the latter isomorphism hodling iff. the completi
 </div>
 </div>
 
-<div id="outline-container-orgb984b98" class="outline-2">
-<h2 id="orgb984b98"><span class="section-number-2">4.</span> Stochastic Embedding into Ultrametric Spaces</h2>
+<div id="outline-container-orgb29c278" class="outline-2">
+<h2 id="orgb29c278"><span class="section-number-2">4.</span> Stochastic Embedding into Ultrametric Spaces</h2>
 <div class="outline-text-2" id="text-4">
 <details class="code-details"
                  style ="padding: 1em;
@@ -563,9 +612,69 @@ then \(LF(X)\approx L^1\), with the latter isomorphism hodling iff. the completi
 </details>
 </div>
 
-<div id="outline-container-org9433e53" class="outline-4">
-<h4 id="org9433e53"><span class="section-number-4">4.0.1.</span> Theorem B&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div id="outline-container-orgb78879f" class="outline-4">
+<h4 id="orgb78879f"><span class="section-number-4">4.0.1.</span> Lemma 4.1</h4>
 <div class="outline-text-4" id="text-4-0-1">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+Let \((X, d_X, p)\) be a pointed metric space, \((K, d_K, q)\) a pointed compact metric space, \(D<\infty\), and \(s\in (0,1)\).
+If there exists a dense basepoint-containing subset \(A\subset X\) such that every finite basepoint-containing subset of \(A\) stochastic biLipschitzly embeds into \(K\) with distortion \(D\) and scaling factor \(s\), then \(X\) stochastic biLipschitzly embeds into \(K\) with distortion \(D\) and scaling factor \(s\). <br>
+</p>
+
+<p>
+如果X的稠密子集可以随机嵌入到K，那么该性质可以延拓到整个X
+</p>
+
+
+</details>
+</div>
+</div>
+
+
+<div id="outline-container-org1ef90f2" class="outline-4">
+<h4 id="org1ef90f2"><span class="section-number-4">4.0.2.</span> Theorem 4.3&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div class="outline-text-4" id="text-4-0-2">
+<details class="code-details"
+                 style ="padding: 1em;
+                          background-color: #e5f5e5;
+                          /* background-color: pink; */
+                          border-radius: 15px;
+                          color: hsl(157 75%);
+                          font-size: 0.9em;
+                          box-shadow: 0.05em 0.1em 5px 0.01em  #00000057;">
+                  <summary>
+                    <strong>
+                      <font face="Courier" size="3" color="green">
+                         Details
+                      </font>
+                    </strong>
+                  </summary>
+<p>
+For every \(\alpha\in(0,1)\), the pointed metric space \(([0,1],|\cdot|^{\alpha})\) stochastic biLipschitzly embeds into a compact, pointed ultrametri space with distortion \(D\le \frac{2^{5\alpha+1}}{(2^{\alpha}-1)(2-2^{\alpha})}\)
+</p>
+
+
+</details>
+</div>
+</div>
+
+<div id="outline-container-org7ac60fa" class="outline-4">
+<h4 id="org7ac60fa"><span class="section-number-4">4.0.3.</span> Theorem B&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div class="outline-text-4" id="text-4-0-3">
 <details class="code-details"
                  style ="padding: 1em;
                           background-color: #e5f5e5;
@@ -592,13 +701,17 @@ and \(LF(X, d^{\alpha})\approx l^1\) .
 </div>
 </div>
 
-<div id="outline-container-org3f53588" class="outline-3">
-<h3 id="org3f53588"><span class="section-number-3">4.1.</span> \(l^{0+}\) -small subsets of \(l^{\infty}\)</h3>
+<div id="outline-container-org3705f39" class="outline-3">
+<h3 id="org3705f39"><span class="section-number-3">4.1.</span> \(l^{0+}\) -small subsets of \(l^{\infty}\)</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+把Theorem 4.3的作用域扩展到 \(l^{\infty}([0,1])\) 所有的 \(l^{0+}\) -small子集
+</p>
+</div>
 </div>
 
-
-<div id="outline-container-org07dd2d2" class="outline-3">
-<h3 id="org07dd2d2"><span class="section-number-3">4.2.</span> Threshold and Snowflake Embeddings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h3>
+<div id="outline-container-orgf340fa3" class="outline-3">
+<h3 id="orgf340fa3"><span class="section-number-3">4.2.</span> Threshold and Snowflake Embeddings&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h3>
 <div class="outline-text-3" id="text-4-2">
 <details class="code-details"
                  style ="padding: 1em;
@@ -625,13 +738,13 @@ For every bounded, separable, pointed metric space \((X, d, p)\) with finite Nag
 </div>
 
 
-<div id="outline-container-orgafdae69" class="outline-3">
-<h3 id="orgafdae69"><span class="section-number-3">4.3.</span> Free Spaces over Distorted Finite Nagata-Dim. Spaces.</h3>
+<div id="outline-container-org1597a5a" class="outline-3">
+<h3 id="org1597a5a"><span class="section-number-3">4.3.</span> Free Spaces over Distorted Finite Nagata-Dim. Spaces.</h3>
 </div>
 </div>
 
-<div id="outline-container-org1b5b3fc" class="outline-2">
-<h2 id="org1b5b3fc"><span class="section-number-2">5.</span> log-Stochastic Embedings and Hyperbolic Fillings</h2>
+<div id="outline-container-org85a970e" class="outline-2">
+<h2 id="org85a970e"><span class="section-number-2">5.</span> log-Stochastic Embedings and Hyperbolic Fillings</h2>
 <div class="outline-text-2" id="text-5">
 <details class="code-details"
                  style ="padding: 1em;
@@ -695,8 +808,8 @@ For every bounded, separable, pointed metric space \((X, d, p)\) with finite Nag
 </details>
 </div>
 
-<div id="outline-container-orgc17ad5e" class="outline-4">
-<h4 id="orgc17ad5e"><span class="section-number-4">5.0.1.</span> Theorem 5.7 (Theorem C)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div id="outline-container-org99a9ac5" class="outline-4">
+<h4 id="org99a9ac5"><span class="section-number-4">5.0.1.</span> Theorem 5.7 (Theorem C)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
 <div class="outline-text-4" id="text-5-0-1">
 <details class="code-details"
                  style ="padding: 1em;
@@ -723,8 +836,8 @@ If \(A\) rough biLipschitzly embeds into \(X\) and \(\partial X\) log-stochastic
 
 
 
-<figure id="orgba3e2ec">
-<img src="2025-01-02-Hyperbolic-Metric-Spaces-and-Stochastic-Embeddings.jpg" alt="2025-01-02-Hyperbolic-Metric-Spaces-and-Stochastic-Embeddings.jpg" width="1000">
+<figure id="orgf3d835f">
+<img src="media/img/2025-01-02-Hyperbolic-Metric-Spaces-and-Stochastic-Embeddings.jpg" alt="2025-01-02-Hyperbolic-Metric-Spaces-and-Stochastic-Embeddings.jpg" width="1000">
 
 <figcaption><span class="figure-number">Figure 1: </span>theorem C</figcaption>
 </figure>
@@ -732,8 +845,8 @@ If \(A\) rough biLipschitzly embeds into \(X\) and \(\partial X\) log-stochastic
 </div>
 
 
-<div id="outline-container-org77fb51d" class="outline-4">
-<h4 id="org77fb51d"><span class="section-number-4">5.0.2.</span> Corollary 5.8</h4>
+<div id="outline-container-org27150a0" class="outline-4">
+<h4 id="org27150a0"><span class="section-number-4">5.0.2.</span> Corollary 5.8</h4>
 <div class="outline-text-4" id="text-5-0-2">
 <details class="code-details"
                  style ="padding: 1em;
@@ -761,12 +874,12 @@ Let \(A\) be an infinite, uniformly discrete, locally finite, pointed metric spa
 </div>
 
 
-<div id="outline-container-org9ffbdaf" class="outline-2">
-<h2 id="org9ffbdaf"><span class="section-number-2">6.</span> The Lipschitz Free Space over \(\mathcal{H}^n\)</h2>
+<div id="outline-container-orgcd56308" class="outline-2">
+<h2 id="orgcd56308"><span class="section-number-2">6.</span> The Lipschitz Free Space over \(\mathcal{H}^n\)</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org348f8cb" class="outline-4">
-<h4 id="org348f8cb"><span class="section-number-4">6.0.1.</span> Theorem D&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
+<div id="outline-container-org3c2e3cc" class="outline-4">
+<h4 id="org3c2e3cc"><span class="section-number-4">6.0.1.</span> Theorem D&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Theorem">Theorem</span></span></h4>
 <div class="outline-text-4" id="text-6-0-1">
 <details class="code-details"
                  style ="padding: 1em;
@@ -800,7 +913,7 @@ the free space over hyperbolic \(n\) -space \(\mathcal{H}^n\) is isomorphic to t
 <div id="postamble" class="status">
 <p class="date">Date: 2024/12/30</p>
 <p class="author">Author: sunpy</p>
-<p class="date">Created: 2025-01-02 周四 23:02</p>
+<p class="date">Created: 2025-01-05 周日 20:42</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
